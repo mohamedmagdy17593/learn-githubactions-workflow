@@ -27,3 +27,23 @@ jobs:
 
     - name: Run tests
       run: yarn test
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js and Yarn
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        registry-url: 'https://registry.npmjs.org/'
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Run build
+      run: yarn build
+
